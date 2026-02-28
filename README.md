@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @VIVAAN-DHAWAN
-- 👀 I’m interested in watching anime,playing stumble guys,football
-- 🌱 I’m currently learning html,css and python
+- 👀 I’m interested in running and calisthenics 
+- 🌱 I’m currently learning about AI development 
 - 📫 How to reach me ... You can reach me by email or discord Email-(armaandhawan61@gmail.com); Discord-(@vivaandhawan08)
 - 😄 Pronouns: He/Him
 

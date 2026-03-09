@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivaan Dhawan | Hybrid Athlete</title>
+    <meta name="description"
+        content="Vivaan Dhawan — Hybrid Athlete pushing peak performance across sprints, football, basketball, and calisthenics.">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Click Spark Canvas -->
+    <canvas id="sparkCanvas"></canvas>
+
+    <!-- ── NAVBAR ── -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-inner">
+            <!-- Logo -->
+            <a href="#" class="nav-logo">
+                <span class="logo-text">VIVAAN<span class="logo-accent">.</span></span>
+            </a>
+
+            <!-- Center Nav Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link">
+                    Get Started
+                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <a href="#disciplines" class="nav-link">
+                    Disciplines
+                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <a href="#about" class="nav-link">
+                    Features
+                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <a href="#contact" class="nav-link">
+                    Resources
+                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="nav-cta-wrap">
+                <a href="#contact" class="pill-btn pill-btn--outline">
+                    <span class="pill-btn__streak"></span>
+                    <span class="pill-btn__text">Get in Touch</span>
+                </a>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="home">
+        <!-- Video background -->
+        <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-bg.png">
+            <source
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"
+                type="video/mp4">
+        </video>
+        <!-- Overlays -->
+        <div class="hero-overlay"></div>
+        <div class="hero-gradient-bottom"></div>
+
+        <!-- Globe canvas (keep existing effect) -->
+        <canvas id="globeCanvas"></canvas>
+
+        <!-- Hero content -->
+        <div class="hero-content">
+            <!-- Badge -->
+            <div class="hero-badge reveal">
+                <span class="hero-badge__dot"></span>
+                <span class="hero-badge__pre">Hybrid Athlete since</span>
+                <span class="hero-badge__date"> 2024</span>
+            </div>
+
+            <h1 class="hero-h1 reveal">Master Movement.<br>Defy Every Limit.</h1>
+
+            <p class="hero-p reveal">Pushing peak performance across sprints, football, basketball, and calisthenics.
+                One body, every domain, zero excuses.</p>
+
+            <div class="hero-btns reveal">
+                <a href="#disciplines" class="pill-btn pill-btn--solid">
+                    <span class="pill-btn__streak"></span>
+                    <span class="pill-btn__text">View Disciplines</span>
+                </a>
+                <a href="#contact" class="pill-btn pill-btn--outline">
+                    <span class="pill-btn__streak"></span>
+                    <span class="pill-btn__text">Contact Me</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TRUSTED BY TICKER ── -->
+    <section class="ticker-section">
+        <div class="ticker-mask">
+            <div class="ticker-track">
+                <span class="ticker-item ticker-bold">TRACK &amp; FIELD</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-italic">Football</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-wide">B A S K E T B A L L</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-light">Calisthenics</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-bold">SPRINTS</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-italic">Endurance</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-wide">R O H T A K</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-light">Hybrid Athlete</span>
+                <span class="ticker-sep">✦</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="ticker-item ticker-bold">TRACK &amp; FIELD</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-italic">Football</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-wide">B A S K E T B A L L</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-light">Calisthenics</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-bold">SPRINTS</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-italic">Endurance</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-wide">R O H T A K</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item ticker-light">Hybrid Athlete</span>
+                <span class="ticker-sep">✦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FEATURES BENTO ── -->
+    <section id="disciplines" class="section bento-section">
+        <div class="bento-ambient"></div>
+        <div class="container">
+            <div class="bento-head">
+                <h2 class="bento-title reveal">Engineered for<br><span class="gradient-text-inline">Total
+                        Domination</span></h2>
+                <p class="bento-sub reveal">Four disciplines. One relentless pursuit of peak performance.</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Card 1: Large (2 cols) -->
+                <div class="glass-card glass-card--large reveal">
+                    <div class="card-blur card-blur--tr"></div>
+                    <div class="card-inner">
+                        <div class="card-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
+                                height="28">
+                                <path d="M13 4a1 1 0 1 0 2 0 1 1 0 0 0-2 0zM6 21l3-7 2.5 2 4-6 2.5 4" />
+                                <path d="M9 14l-3 1" />
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Track &amp; Field</h3>
+                        <p class="card-body">Specializing in sprints and endurance. Pushing the limits of human speed
+                            and stamina with every stride, every second shaved off the clock.</p>
+                        <div class="card-stat">
+                            <span class="stat-num gradient-text">Sprints</span>
+                            <span class="stat-label">Speed is a weapon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Small -->
+                <div class="glass-card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
+                                height="28">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z" />
+                                <path d="M2 12h20" />
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Football</h3>
+                        <p class="card-body">Agility, teamwork, and tactical precision on the field.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Small -->
+                <div class="glass-card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
+                                height="28">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" />
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Basketball</h3>
+                        <p class="card-body">Explosive verticality and court vision. Pure athleticism.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Large (2 cols) -->
+                <div class="glass-card glass-card--large reveal">
+                    <div class="card-blur card-blur--bl"></div>
+                    <div class="card-inner">
+                        <div class="card-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
+                                height="28">
+                                <path d="M7 8l-4 4 4 4M17 8l4 4-4 4M12 4v16" />
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Calisthenics</h3>
+                        <p class="card-body">Mastery of bodyweight. Muscle-ups, levers, and functional strength
+                            redefined. The body as the only equipment needed.</p>
+                        <div class="card-stat">
+                            <span class="stat-num gradient-text">Bodyweight</span>
+                            <span class="stat-label">No equipment needed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── METRICS BANNER ── -->
+    <section class="metrics-section">
+        <div class="metrics-inner">
+            <div class="metric-col reveal">
+                <span class="metric-num gradient-text">Track</span>
+                <span class="metric-label">& Field</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-col reveal">
+                <span class="metric-num gradient-text">Football</span>
+                <span class="metric-label">The Beautiful Game</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-col reveal">
+                <span class="metric-num gradient-text">Basketball</span>
+                <span class="metric-label">Court Domination</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ABOUT / TRAINING SECTION ── -->
+    <section id="about" class="section dev-section">
+        <div class="dev-grid-bg"></div>
+        <div class="container dev-container">
+            <div class="dev-pill reveal">THE HYBRID ATHLETE</div>
+            <h2 class="dev-title reveal">Train hard.<br><span class="gradient-text-inline">Compete harder.</span></h2>
+            <p class="dev-sub reveal">I don't just play one sport — I master movement. As a hybrid athlete, I bridge
+                endurance, explosive power, and functional strength across every domain.</p>
+            <a href="#contact" class="dev-link reveal">Work with me <span class="dev-link-arrow">→</span></a>
+
+            <!-- Performance Dashboard Card (replaces code editor) -->
+            <div class="perf-editor-wrap reveal">
+                <div class="perf-editor-glow"></div>
+                <div class="perf-editor glass-surface">
+                    <div class="pe-header">
+                        <div class="pe-dots">
+                            <span class="pe-dot pe-dot--red"></span>
+                            <span class="pe-dot pe-dot--yellow"></span>
+                            <span class="pe-dot pe-dot--green"></span>
+                        </div>
+                        <span class="pe-filename">vivaan_stats.ts</span>
+                        <div class="pe-header-spacer"></div>
+                    </div>
+                    <div class="pe-body">
+                        <div class="pe-line"><span class="pe-kw">const</span> <span class="pe-var">athlete</span> =
+                            <span class="pe-cls">HybridAthlete</span><span class="pe-dim">.</span><span
+                                class="pe-fn">init</span><span class="pe-dim">({</span></div>
+                        <div class="pe-line pe-indent"><span class="pe-str">name</span><span class="pe-dim">:</span>
+                            <span class="pe-string">"Vivaan Dhawan"</span><span class="pe-dim">,</span></div>
+                        <div class="pe-line pe-indent"><span class="pe-str">age</span><span class="pe-dim">:</span>
+                            <span class="pe-num">14</span><span class="pe-dim">,</span></div>
+                        <div class="pe-line pe-indent"><span class="pe-str">vo2max</span><span class="pe-dim">:</span>
+                            <span class="pe-num">50.2</span><span class="pe-dim">,</span></div>
+                        <div class="pe-line pe-indent"><span class="pe-str">prPace</span><span class="pe-dim">:</span>
+                            <span class="pe-string">"4:20/km"</span><span class="pe-dim">,</span></div>
+                        <div class="pe-line pe-indent"><span class="pe-str">disciplines</span><span class="pe-dim">:
+                                [</span><span class="pe-string">"sprints"</span><span class="pe-dim">, </span><span
+                                class="pe-string">"football"</span><span class="pe-dim">, </span><span
+                                class="pe-string">"basketball"</span><span class="pe-dim">, </span><span
+                                class="pe-string">"calisthenics"</span><span class="pe-dim">],</span></div>
+                        <div class="pe-line pe-indent"><span class="pe-str">location</span><span class="pe-dim">:</span>
+                            <span class="pe-string">"Rohtak, Haryana"</span><span class="pe-dim">,</span></div>
+                        <div class="pe-line pe-indent"><span class="pe-str">status</span><span class="pe-dim">:</span>
+                            <span class="pe-bool">true</span> <span class="pe-comment">// actively training</span></div>
+                        <div class="pe-line"><span class="pe-dim">});</span></div>
+                        <div class="pe-line pe-spacer"></div>
+                        <div class="pe-line"><span class="pe-comment">// Start performance tracking</span></div>
+                        <div class="pe-line"><span class="pe-kw">await</span> <span class="pe-var">athlete</span><span
+                                class="pe-dim">.</span><span class="pe-fn">beginSession</span><span
+                                class="pe-dim">();</span></div>
+                        <div class="pe-line"><span class="pe-kw">const</span> <span class="pe-var">metrics</span> =
+                            <span class="pe-kw">await</span> <span class="pe-var">athlete</span><span
+                                class="pe-dim">.</span><span class="pe-fn">getMetrics</span><span
+                                class="pe-dim">();</span></div>
+                        <div class="pe-line"><span class="pe-cls">console</span><span class="pe-dim">.</span><span
+                                class="pe-fn">log</span><span class="pe-dim">(</span><span
+                                class="pe-var">metrics</span><span class="pe-dim">);</span> <span class="pe-comment">//
+                                → peak</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── BOTTOM CTA ── -->
+    <section id="contact" class="section cta-section">
+        <div class="cta-blur"></div>
+        <div class="container cta-container">
+            <h2 class="cta-title reveal gradient-text">Ready to connect?</h2>
+            <p class="cta-sub reveal">Open for collaborations, sponsorships, and training inquiries. Let's build
+                something extraordinary together.</p>
+            <div class="cta-btns reveal">
+                <a href="mailto:vivaandhawan08@gmail.com" class="pill-btn pill-btn--solid pill-btn--lg">
+                    <span class="pill-btn__streak"></span>
+                    <span class="pill-btn__text">Email Me</span>
+                </a>
+                <a href="https://instagram.com/vxndwn" target="_blank" class="pill-btn pill-btn--outline pill-btn--lg">
+                    <span class="pill-btn__streak"></span>
+                    <span class="pill-btn__text">Instagram</span>
+                </a>
+                <a href="https://discord.gg/pa2cn8TnR2" target="_blank" class="pill-btn pill-btn--outline pill-btn--lg">
+                    <span class="pill-btn__streak"></span>
+                    <span class="pill-btn__text">Discord</span>
+                </a>
+            </div>
+            <p class="cta-handles reveal">📸 @vxndwn &nbsp;&nbsp;•&nbsp;&nbsp; 💬 @vivaandhawan08</p>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-logo">VIVAAN<span class="logo-accent">.</span></span>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms</a>
+                <a href="https://instagram.com/vxndwn" target="_blank" class="footer-link">Instagram</a>
+                <a href="https://discord.gg/pa2cn8TnR2" target="_blank" class="footer-link">Discord</a>
+            </div>
+            <span class="footer-copy">&copy; 2026 Vivaan Dhawan. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

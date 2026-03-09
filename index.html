@@ -268,10 +268,11 @@
                                         </linearGradient>
                                     </defs>
                                     <circle class="ring-bg" cx="50" cy="50" r="42"></circle>
-                                    <circle class="ring-fill" cx="50" cy="50" r="42"></circle>
+                                    <circle class="ring-fill" id="stat-ring-fill" cx="50" cy="50" r="42"></circle>
                                 </svg>
                                 <div class="ring-content">
-                                    <span class="ring-val">99<span class="ring-unit">%</span></span>
+                                    <span class="ring-val"><span id="stat-ring-val">99</span><span
+                                            class="ring-unit">%</span></span>
                                     <span class="ring-lbl">Peak Output</span>
                                 </div>
                             </div>
@@ -279,23 +280,26 @@
 
                         <div class="stat-bars-box">
                             <div class="stat-bar">
-                                <div class="bar-info"><span>Explosive Power</span> <span>96%</span></div>
+                                <div class="bar-info"><span>Explosive Power</span> <span
+                                        id="stat-explosive-txt">96%</span></div>
                                 <div class="bar-track">
-                                    <div class="bar-fill"
+                                    <div id="stat-explosive-bar" class="bar-fill"
                                         style="transition-delay: 0.2s; width: 96%; background: #7c3aed;"></div>
                                 </div>
                             </div>
                             <div class="stat-bar">
-                                <div class="bar-info"><span>Endurance Base</span> <span>88%</span></div>
+                                <div class="bar-info"><span>Endurance Base</span> <span
+                                        id="stat-endurance-txt">88%</span></div>
                                 <div class="bar-track">
-                                    <div class="bar-fill"
+                                    <div id="stat-endurance-bar" class="bar-fill"
                                         style="transition-delay: 0.4s; width: 88%; background: #ffffff;"></div>
                                 </div>
                             </div>
                             <div class="stat-bar">
-                                <div class="bar-info"><span>Agility & Reaction</span> <span>94%</span></div>
+                                <div class="bar-info"><span>Agility & Reaction</span> <span
+                                        id="stat-agility-txt">94%</span></div>
                                 <div class="bar-track">
-                                    <div class="bar-fill"
+                                    <div id="stat-agility-bar" class="bar-fill"
                                         style="transition-delay: 0.6s; width: 94%; background: rgba(255,255,255,0.4);">
                                     </div>
                                 </div>
@@ -305,15 +309,15 @@
 
                     <div class="stats-footer">
                         <div class="stat-footer-item">
-                            <span class="sfi-val gradient-text">4:20/km</span>
+                            <span class="sfi-val gradient-text" id="stat-pace">4:20/km</span>
                             <span class="sfi-lbl">Pace PR</span>
                         </div>
                         <div class="stat-footer-item">
-                            <span class="sfi-val gradient-text">50.2</span>
+                            <span class="sfi-val gradient-text" id="stat-vo2">50.2</span>
                             <span class="sfi-lbl">VO2 Max</span>
                         </div>
                         <div class="stat-footer-item">
-                            <span class="sfi-val gradient-text">14 yrs</span>
+                            <span class="sfi-val gradient-text" id="stat-age">14 yrs</span>
                             <span class="sfi-lbl">Age Group</span>
                         </div>
                     </div>
@@ -391,6 +395,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
+    <script type="module" src="firebase-listener.js"></script>
 </body>
 
 </html>

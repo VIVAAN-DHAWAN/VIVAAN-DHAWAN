@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Admin | Vivaan Dashboard</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding: 40px 20px;
+            background: #000;
+            color: #fff;
+            font-family: 'General Sans', sans-serif;
+            margin: 0;
+        }
+
+        .admin-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .admin-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            /* Prevents iOS zoom */
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #7c3aed;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #ff3b30;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff3b30;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(255, 59, 48, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <div class="admin-card">
+            <h1>
+                <div class="live-dot"></div> Live Dashboard
+            </h1>
+
+            <!-- Login Section (will be connected to Firebase Auth) -->
+            <div id="login-section">
+                <div class="input-group">
+                    <label>Admin Password</label>
+                    <input type="password" id="password" placeholder="Enter password...">
+                </div>
+                <button id="login-btn">Secure Login</button>
+            </div>
+
+            <!-- Editor Section (shows after login) -->
+            <div id="edit-section" style="display: none;">
+                <div class="input-group">
+                    <label>Peak Output (%)</label>
+                    <input type="number" id="peakOutput" value="99">
+                </div>
+
+                <div class="input-group">
+                    <label>Explosive Power (%)</label>
+                    <input type="number" id="explosivePower" value="96">
+                </div>
+
+                <div class="input-group">
+                    <label>Endurance Base (%)</label>
+                    <input type="number" id="enduranceBase" value="88">
+                </div>
+
+                <div class="input-group">
+                    <label>Agility & Reaction (%)</label>
+                    <input type="number" id="agilityReaction" value="94">
+                </div>
+
+                <div class="input-group">
+                    <label>Pace PR</label>
+                    <input type="text" id="pacePr" value="4:20/km">
+                </div>
+
+                <div class="input-group">
+                    <label>VO2 Max</label>
+                    <input type="text" id="vo2Max" value="50.2">
+                </div>
+
+                <div class="input-group">
+                    <label>Age Group</label>
+                    <input type="text" id="ageGroup" value="14 yrs">
+                </div>
+
+                <button id="save-btn">Push to Live Website</button>
+                <p id="status-msg"
+                    style="margin-top: 20px; font-size: 14px; text-align: center; color: #27c93f; display: none; font-weight: 500;">
+                    ✓ Updated Successfully!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts will be injected here -->
+    <!-- Firebase SDK Setup -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD12XA4akYEc-sPwRJRKTXqi45cOLbl3YA",
+            authDomain: "vivaan-dhawan-fb4b3.firebaseapp.com",
+            projectId: "vivaan-dhawan-fb4b3",
+            storageBucket: "vivaan-dhawan-fb4b3.firebasestorage.app",
+            messagingSenderId: "71786766432",
+            appId: "1:71786766432:web:311fa210fdcde751066305",
+            databaseURL: "https://vivaan-dhawan-fb4b3-default-rtdb.firebaseio.com" // Usually default
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getDatabase(app);
+
+        // Login Logic
+        const loginBtn = document.getElementById('login-btn');
+        const loginSection = document.getElementById('login-section');
+        const editSection = document.getElementById('edit-section');
+        const passInput = document.getElementById('password');
+
+        loginBtn.addEventListener('click', () => {
+            const email = "admin@vivaan.com"; // Expected admin email
+            const password = passInput.value;
+
+            loginBtn.innerText = 'Logging in...';
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    loginSection.style.display = 'none';
+                    editSection.style.display = 'block';
+                })
+                .catch((error) => {
+                    alert("Authentication Failed: " + error.message);
+                    loginBtn.innerText = 'Secure Login';
+                });
+        });
+
+        // Save Data Logic
+        const saveBtn = document.getElementById('save-btn');
+        const statusMsg = document.getElementById('status-msg');
+
+        saveBtn.addEventListener('click', () => {
+            saveBtn.innerText = 'Pushing...';
+
+            set(ref(db, 'stats/'), {
+                peakOutput: document.getElementById('peakOutput').value,
+                explosivePower: document.getElementById('explosivePower').value,
+                enduranceBase: document.getElementById('enduranceBase').value,
+                agilityReaction: document.getElementById('agilityReaction').value,
+                pacePr: document.getElementById('pacePr').value,
+                vo2Max: document.getElementById('vo2Max').value,
+                ageGroup: document.getElementById('ageGroup').value,
+            }).then(() => {
+                saveBtn.innerText = 'Push to Live Website';
+                statusMsg.style.display = 'block';
+                setTimeout(() => { statusMsg.style.display = 'none'; }, 3000);
+            }).catch((error) => {
+                alert("Failed to save: " + error.message);
+                saveBtn.innerText = 'Push to Live Website';
+            });
+        });
+    </script>
+</body>
+
+</html>

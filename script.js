@@ -105,7 +105,7 @@
     );
     scene.add(core);
 
-    const dotCount = 4000;
+    const dotCount = window.innerWidth < 768 ? 1500 : 4000;
     const positions = new Float32Array(dotCount * 3);
     for (let i = 0; i < dotCount; i++) {
         const phi = Math.acos(2 * Math.random() - 1);

@@ -202,10 +202,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Click handler
+    // Click handler — with scroll lock to prevent fighting
+    let scrollLocked = false;
+    let scrollLockTimer = null;
+
     pillLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+
+            // Lock scroll-based tracking so it doesn't override the click
+            scrollLocked = true;
+            if (scrollLockTimer) clearTimeout(scrollLockTimer);
+            scrollLockTimer = setTimeout(() => { scrollLocked = false; }, 900);
+
             pillLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
             moveIndicator(link);
@@ -231,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let scrollTicking = false;
 
     function updateActiveSection() {
+        // Don't update if user just clicked a nav link (let smooth scroll finish)
+        if (scrollLocked) return;
+
         const scrollY = window.scrollY + 200;
         let currentSection = 'home';
 

@@ -1,6 +1,6 @@
 /* ============================================
    VIVAAN DHAWAN PORTFOLIO — SCRIPT
-   Web3 aesthetic + existing effects
+   Web3 aesthetic + Glass Pill Nav + Scroll Reveal
    ============================================ */
 
 /* ===== 1. CLICK SPARK ===== */
@@ -27,8 +27,6 @@
             this.life = 1;
             this.decay = Math.random() * 0.03 + 0.02;
             this.size = Math.random() * 2.5 + 0.5;
-            this.hue = Math.random() > 0.5 ? 0 : 220;
-            this.sat = Math.random() > 0.5 ? 0 : 30;
         }
         update() {
             this.x += this.vx; this.y += this.vy;
@@ -38,9 +36,7 @@
         draw() {
             ctx.save();
             ctx.globalAlpha = this.life * 0.8;
-            ctx.fillStyle = this.sat === 0
-                ? `rgba(255,255,255,${this.life})`
-                : `hsl(220, 60%, 80%)`;
+            ctx.fillStyle = `rgba(255,255,255,${this.life})`;
             ctx.shadowColor = 'rgba(255,255,255,0.6)';
             ctx.shadowBlur = 6;
             ctx.beginPath();
@@ -53,8 +49,6 @@
     document.addEventListener('click', (e) => {
         for (let i = 0; i < 10; i++) sparks.push(new Spark(e.clientX, e.clientY));
     });
-
-    // Touch support for sparks on mobile
     document.addEventListener('touchstart', (e) => {
         const touch = e.touches[0];
         for (let i = 0; i < 8; i++) sparks.push(new Spark(touch.clientX, touch.clientY));
@@ -97,7 +91,6 @@
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // White wireframe globe for the monochrome aesthetic
     const globe = new THREE.Mesh(
         new THREE.SphereGeometry(1.2, 60, 60),
         new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.05 })
@@ -171,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObs = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
             if (e.isIntersecting) {
-                // Stagger based on index within parent
                 const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
                 const idx = siblings.indexOf(e.target);
                 e.target.style.transitionDelay = (idx * 0.07) + 's';
@@ -183,8 +175,97 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => revealObs.observe(el));
 
 
-    // ── Smooth scroll ──
+    // ── Glass Pill Nav — Sliding Indicator ──
+    const pillNav = document.getElementById('pillNavWrap');
+    const indicator = document.getElementById('pillIndicator');
+    const pillLinks = document.querySelectorAll('.pill-link');
+
+    function moveIndicator(link) {
+        if (!pillNav || !indicator || !link) return;
+        const navRect = pillNav.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        indicator.style.left = (linkRect.left - navRect.left) + 'px';
+        indicator.style.width = linkRect.width + 'px';
+    }
+
+    // Initialize indicator on the active link
+    const initialActive = pillNav ? pillNav.querySelector('.pill-link.active') : null;
+    if (initialActive) {
+        // Set initial width without transition
+        indicator.style.transition = 'none';
+        moveIndicator(initialActive);
+        // Re-enable transition after a tick
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                indicator.style.transition = '';
+            });
+        });
+    }
+
+    // Click handler
+    pillLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            pillLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            moveIndicator(link);
+
+            const href = link.getAttribute('href');
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('navbar').classList.remove('open');
+            }
+        });
+    });
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        const active = pillNav ? pillNav.querySelector('.pill-link.active') : null;
+        if (active) moveIndicator(active);
+    });
+
+
+    // ── Scroll-based active section tracking ──
+    const sections = document.querySelectorAll('section[id]');
+    let scrollTicking = false;
+
+    function updateActiveSection() {
+        const scrollY = window.scrollY + 200;
+        let currentSection = 'home';
+
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        const activeLink = pillNav ? pillNav.querySelector(`.pill-link[data-section="${currentSection}"]`) : null;
+        if (activeLink && !activeLink.classList.contains('active')) {
+            pillLinks.forEach(l => l.classList.remove('active'));
+            activeLink.classList.add('active');
+            moveIndicator(activeLink);
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            requestAnimationFrame(() => {
+                updateActiveSection();
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    }, { passive: true });
+
+
+    // ── Smooth scroll for all anchor links ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
+        // Skip pill-link clicks (already handled above)
+        if (a.classList.contains('pill-link')) return;
+
         a.addEventListener('click', e => {
             const href = a.getAttribute('href');
             if (href === '#') {
@@ -196,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const t = document.querySelector(href);
             if (t) {
                 t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Close mobile menu
                 document.getElementById('navbar').classList.remove('open');
             }
         });
@@ -205,14 +285,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Navbar scroll state ──
     const nav = document.getElementById('navbar');
-    let ticking = false;
+    let navTicking = false;
     window.addEventListener('scroll', () => {
-        if (!ticking) {
+        if (!navTicking) {
             requestAnimationFrame(() => {
                 nav.classList.toggle('scrolled', window.scrollY > 60);
-                ticking = false;
+                navTicking = false;
             });
-            ticking = true;
+            navTicking = true;
         }
     }, { passive: true });
 
@@ -224,8 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.classList.toggle('open');
         });
     }
-
-    // Close mobile nav when clicking outside
     document.addEventListener('click', (e) => {
         if (nav.classList.contains('open') && !nav.contains(e.target)) {
             nav.classList.remove('open');
@@ -252,14 +330,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // ── Glass card tilt micro-interaction (desktop only) ──
+    // ── Glass card mouse-follow light + tilt (desktop only) ──
     if (window.matchMedia('(hover: hover)').matches) {
         document.querySelectorAll('.glass-card').forEach(card => {
             card.addEventListener('mousemove', e => {
                 const r = card.getBoundingClientRect();
-                const x = (e.clientX - r.left) / r.width - 0.5;
-                const y = (e.clientY - r.top) / r.height - 0.5;
-                card.style.transform = `translateY(-4px) rotateX(${-y * 3}deg) rotateY(${x * 3}deg)`;
+                const x = ((e.clientX - r.left) / r.width) * 100;
+                const y = ((e.clientY - r.top) / r.height) * 100;
+                // Set CSS custom properties for the radial gradient light
+                card.style.setProperty('--card-x', x + '%');
+                card.style.setProperty('--card-y', y + '%');
+                // Tilt effect
+                const tiltX = (e.clientX - r.left) / r.width - 0.5;
+                const tiltY = (e.clientY - r.top) / r.height - 0.5;
+                card.style.transform = `translateY(-4px) rotateX(${-tiltY * 3}deg) rotateY(${tiltX * 3}deg)`;
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = '';

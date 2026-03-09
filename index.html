@@ -25,32 +25,14 @@
                 <span class="logo-text">VIVAAN<span class="logo-accent">.</span></span>
             </a>
 
-            <!-- Center Nav Links -->
-            <div class="nav-links" id="navLinks">
-                <a href="#home" class="nav-link">
-                    Get Started
-                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                    </svg>
-                </a>
-                <a href="#disciplines" class="nav-link">
-                    Disciplines
-                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                    </svg>
-                </a>
-                <a href="#about" class="nav-link">
-                    Features
-                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                    </svg>
-                </a>
-                <a href="#contact" class="nav-link">
-                    Resources
-                    <svg class="chevron" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                    </svg>
-                </a>
+            <!-- Glass Pill Nav (centered) -->
+            <div class="pill-nav-wrap" id="pillNavWrap">
+                <div class="pill-indicator" id="pillIndicator"></div>
+                <a href="#home" class="pill-link active" data-section="home">Home</a>
+                <a href="#about" class="pill-link" data-section="about">About</a>
+                <a href="#disciplines" class="pill-link" data-section="disciplines">Disciplines</a>
+                <a href="#gallery" class="pill-link" data-section="gallery">Gallery</a>
+                <a href="#contact" class="pill-link" data-section="contact">Contact</a>
             </div>
 
             <!-- CTA Button -->
@@ -282,24 +264,31 @@
                     <div class="pe-body">
                         <div class="pe-line"><span class="pe-kw">const</span> <span class="pe-var">athlete</span> =
                             <span class="pe-cls">HybridAthlete</span><span class="pe-dim">.</span><span
-                                class="pe-fn">init</span><span class="pe-dim">({</span></div>
+                                class="pe-fn">init</span><span class="pe-dim">({</span>
+                        </div>
                         <div class="pe-line pe-indent"><span class="pe-str">name</span><span class="pe-dim">:</span>
-                            <span class="pe-string">"Vivaan Dhawan"</span><span class="pe-dim">,</span></div>
+                            <span class="pe-string">"Vivaan Dhawan"</span><span class="pe-dim">,</span>
+                        </div>
                         <div class="pe-line pe-indent"><span class="pe-str">age</span><span class="pe-dim">:</span>
-                            <span class="pe-num">14</span><span class="pe-dim">,</span></div>
+                            <span class="pe-num">14</span><span class="pe-dim">,</span>
+                        </div>
                         <div class="pe-line pe-indent"><span class="pe-str">vo2max</span><span class="pe-dim">:</span>
-                            <span class="pe-num">50.2</span><span class="pe-dim">,</span></div>
+                            <span class="pe-num">50.2</span><span class="pe-dim">,</span>
+                        </div>
                         <div class="pe-line pe-indent"><span class="pe-str">prPace</span><span class="pe-dim">:</span>
-                            <span class="pe-string">"4:20/km"</span><span class="pe-dim">,</span></div>
+                            <span class="pe-string">"4:20/km"</span><span class="pe-dim">,</span>
+                        </div>
                         <div class="pe-line pe-indent"><span class="pe-str">disciplines</span><span class="pe-dim">:
                                 [</span><span class="pe-string">"sprints"</span><span class="pe-dim">, </span><span
                                 class="pe-string">"football"</span><span class="pe-dim">, </span><span
                                 class="pe-string">"basketball"</span><span class="pe-dim">, </span><span
                                 class="pe-string">"calisthenics"</span><span class="pe-dim">],</span></div>
                         <div class="pe-line pe-indent"><span class="pe-str">location</span><span class="pe-dim">:</span>
-                            <span class="pe-string">"Rohtak, Haryana"</span><span class="pe-dim">,</span></div>
+                            <span class="pe-string">"Rohtak, Haryana"</span><span class="pe-dim">,</span>
+                        </div>
                         <div class="pe-line pe-indent"><span class="pe-str">status</span><span class="pe-dim">:</span>
-                            <span class="pe-bool">true</span> <span class="pe-comment">// actively training</span></div>
+                            <span class="pe-bool">true</span> <span class="pe-comment">// actively training</span>
+                        </div>
                         <div class="pe-line"><span class="pe-dim">});</span></div>
                         <div class="pe-line pe-spacer"></div>
                         <div class="pe-line"><span class="pe-comment">// Start performance tracking</span></div>
@@ -309,7 +298,8 @@
                         <div class="pe-line"><span class="pe-kw">const</span> <span class="pe-var">metrics</span> =
                             <span class="pe-kw">await</span> <span class="pe-var">athlete</span><span
                                 class="pe-dim">.</span><span class="pe-fn">getMetrics</span><span
-                                class="pe-dim">();</span></div>
+                                class="pe-dim">();</span>
+                        </div>
                         <div class="pe-line"><span class="pe-cls">console</span><span class="pe-dim">.</span><span
                                 class="pe-fn">log</span><span class="pe-dim">(</span><span
                                 class="pe-var">metrics</span><span class="pe-dim">);</span> <span class="pe-comment">//
@@ -320,7 +310,35 @@
         </div>
     </section>
 
-    <!-- ── BOTTOM CTA ── -->
+    <!-- ── GALLERY ── -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="bento-head">
+                <h2 class="bento-title reveal">In <span class="gradient-text-inline">Action</span></h2>
+                <p class="bento-sub reveal">Moments captured across every discipline.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="glass-card gallery-card reveal">
+                    <div class="card-inner gallery-placeholder">🏃‍♂️<span>Track</span></div>
+                </div>
+                <div class="glass-card gallery-card reveal">
+                    <div class="card-inner gallery-placeholder">⚽<span>Football</span></div>
+                </div>
+                <div class="glass-card gallery-card reveal">
+                    <div class="card-inner gallery-placeholder">🏀<span>Basketball</span></div>
+                </div>
+                <div class="glass-card gallery-card reveal">
+                    <div class="card-inner gallery-placeholder">💪<span>Calisthenics</span></div>
+                </div>
+                <div class="glass-card gallery-card reveal">
+                    <div class="card-inner gallery-placeholder">🏆<span>Achievements</span></div>
+                </div>
+                <div class="glass-card gallery-card reveal">
+                    <div class="card-inner gallery-placeholder">🎯<span>Training</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="contact" class="section cta-section">
         <div class="cta-blur"></div>
         <div class="container cta-container">

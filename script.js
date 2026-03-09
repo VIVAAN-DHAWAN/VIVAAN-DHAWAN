@@ -47,9 +47,11 @@
     }
 
     document.addEventListener('click', (e) => {
+        if (sparks.length > 150) return; // Prevent memory exhaustion/DoS
         for (let i = 0; i < 10; i++) sparks.push(new Spark(e.clientX, e.clientY));
     });
     document.addEventListener('touchstart', (e) => {
+        if (sparks.length > 150) return;
         const touch = e.touches[0];
         for (let i = 0; i < 8; i++) sparks.push(new Spark(touch.clientX, touch.clientY));
     }, { passive: true });
@@ -134,8 +136,18 @@
     ring.rotation.z = 0.15;
     scene.add(ring);
 
+    let isVisible = true;
+    const heroSection = document.getElementById('home');
+    if (heroSection) {
+        new IntersectionObserver((entries) => {
+            isVisible = entries[0].isIntersecting;
+        }, { threshold: 0 }).observe(heroSection);
+    }
+
     function animate() {
         requestAnimationFrame(animate);
+        if (!isVisible) return; // Save GPU/CPU when scrolled past hero
+
         const s = 0.0015;
         globe.rotation.y += s;
         core.rotation.y += s;
@@ -301,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (!navTicking) {
             requestAnimationFrame(() => {
-                nav.classList.toggle('scrolled', window.scrollY > 60);
+                if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
                 navTicking = false;
             });
             navTicking = true;
@@ -311,13 +323,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Hamburger toggle ──
     const ham = document.getElementById('hamburger');
-    if (ham) {
+    if (ham && nav) {
         ham.addEventListener('click', () => {
             nav.classList.toggle('open');
         });
     }
     document.addEventListener('click', (e) => {
-        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+        if (nav && nav.classList.contains('open') && !nav.contains(e.target)) {
             nav.classList.remove('open');
         }
     });

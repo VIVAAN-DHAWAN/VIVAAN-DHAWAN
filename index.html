@@ -1,401 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivaan Dhawan | Hybrid Athlete</title>
-    <meta name="description"
-        content="Vivaan Dhawan — Hybrid Athlete pushing peak performance across sprints, football, basketball, and calisthenics.">
-    <link rel="preconnect" href="https://api.fontshare.com">
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>AI Exam Flashcards - Grade 9</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #bb86fc;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            color: #aaaaaa;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        select, button {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: #333333;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #444444;
+        }
+        button.primary {
+            background-color: #bb86fc;
+            color: #000;
+            font-weight: bold;
+        }
+        button.primary:hover {
+            background-color: #9965f4;
+        }
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            margin-bottom: 20px;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 16px;
+        }
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .flashcard-front {
+            background-color: #1e1e1e;
+            border: 2px solid #333333;
+        }
+        .flashcard-back {
+            background-color: #bb86fc;
+            color: #121212;
+            transform: rotateY(180deg);
+        }
+        .category-label {
+            position: absolute;
+            top: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+        .card-content {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .card-counter {
+            color: #888888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
-
 <body>
 
-    <!-- Click Spark Canvas -->
-    <canvas id="sparkCanvas"></canvas>
+    <h1>AI Flashcards</h1>
+    <p class="subtitle">Grade 9 Syllabus (Part A & Part B)</p>
 
-    <!-- ── NAVBAR ── -->
-    <nav id="navbar" class="navbar">
-        <div class="nav-inner">
-            <!-- Logo -->
-            <a href="#" class="nav-logo">
-                <span class="logo-text">VIVAAN<span class="logo-accent">.</span></span>
-            </a>
+    <div class="controls">
+        <select id="category-select">
+            <option value="all">All Topics</option>
+            <option value="part-a">Part A: Employability Skills</option>
+            <option value="part-b">Part B: AI Skills</option>
+        </select>
+        <button id="shuffle-btn">Shuffle</button>
+    </div>
 
-            <!-- Glass Pill Nav (centered) -->
-            <div class="pill-nav-wrap" id="pillNavWrap">
-                <div class="pill-indicator" id="pillIndicator"></div>
-                <a href="#home" class="pill-link active" data-section="home">Home</a>
-                <a href="#about" class="pill-link" data-section="about">About</a>
-                <a href="#disciplines" class="pill-link" data-section="disciplines">Disciplines</a>
-                <a href="#gallery" class="pill-link" data-section="gallery">Gallery</a>
-                <a href="#contact" class="pill-link" data-section="contact">Contact</a>
+    <div class="card-counter"><span id="current-idx">1</span> / <span id="total-cards">0</span></div>
+
+    <div class="flashcard-container" id="flashcard-container">
+        <div class="flashcard" id="flashcard">
+            <div class="flashcard-face flashcard-front">
+                <div class="category-label" id="front-category">Category</div>
+                <div class="card-content" id="front-content">Question goes here</div>
+                <div style="position: absolute; bottom: 15px; font-size: 12px; opacity: 0.5;">Tap to flip</div>
             </div>
-
-            <!-- CTA Button -->
-            <div class="nav-cta-wrap">
-                <a href="#contact" class="pill-btn pill-btn--outline">
-                    <span class="pill-btn__streak"></span>
-                    <span class="pill-btn__text">Get in Touch</span>
-                </a>
-            </div>
-
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- ── HERO ── -->
-    <section class="hero" id="home">
-        <!-- Video background -->
-        <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-bg.png">
-            <source
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"
-                type="video/mp4">
-        </video>
-        <!-- Overlays -->
-        <div class="hero-overlay"></div>
-        <div class="hero-gradient-bottom"></div>
-
-        <!-- Globe canvas (keep existing effect) -->
-        <canvas id="globeCanvas"></canvas>
-
-        <!-- Hero content -->
-        <div class="hero-content">
-            <!-- Badge -->
-            <div class="hero-badge reveal">
-                <span class="hero-badge__dot"></span>
-                <span class="hero-badge__pre">Hybrid Athlete since</span>
-                <span class="hero-badge__date"> 2024</span>
-            </div>
-
-            <h1 class="hero-h1 reveal">Master Movement.<br>Defy Every Limit.</h1>
-
-            <p class="hero-p reveal">Pushing peak performance across sprints, football, basketball, and calisthenics.
-                One body, every domain, zero excuses.</p>
-
-            <div class="hero-btns reveal">
-                <a href="#disciplines" class="pill-btn pill-btn--solid">
-                    <span class="pill-btn__streak"></span>
-                    <span class="pill-btn__text">View Disciplines</span>
-                </a>
-                <a href="#contact" class="pill-btn pill-btn--outline">
-                    <span class="pill-btn__streak"></span>
-                    <span class="pill-btn__text">Contact Me</span>
-                </a>
+            <div class="flashcard-face flashcard-back">
+                <div class="category-label" style="color: rgba(0,0,0,0.6);">Answer</div>
+                <div class="card-content" id="back-content">Answer goes here</div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ── TRUSTED BY TICKER ── -->
-    <section class="ticker-section">
-        <div class="ticker-mask">
-            <div class="ticker-track">
-                <span class="ticker-item ticker-bold">TRACK &amp; FIELD</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-italic">Football</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-wide">B A S K E T B A L L</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-light">Calisthenics</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-bold">SPRINTS</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-italic">Endurance</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-wide">R O H T A K</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-light">Hybrid Athlete</span>
-                <span class="ticker-sep">✦</span>
-                <!-- Duplicate for seamless loop -->
-                <span class="ticker-item ticker-bold">TRACK &amp; FIELD</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-italic">Football</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-wide">B A S K E T B A L L</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-light">Calisthenics</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-bold">SPRINTS</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-italic">Endurance</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-wide">R O H T A K</span>
-                <span class="ticker-sep">✦</span>
-                <span class="ticker-item ticker-light">Hybrid Athlete</span>
-                <span class="ticker-sep">✦</span>
-            </div>
-        </div>
-    </section>
+    <div class="controls">
+        <button id="prev-btn">← Prev</button>
+        <button id="next-btn" class="primary">Next →</button>
+    </div>
 
-    <!-- ── FEATURES BENTO ── -->
-    <section id="disciplines" class="section bento-section">
-        <div class="bento-ambient"></div>
-        <div class="container">
-            <div class="bento-head">
-                <h2 class="bento-title reveal">Engineered for<br><span class="gradient-text-inline">Total
-                        Domination</span></h2>
-                <p class="bento-sub reveal">Four disciplines. One relentless pursuit of peak performance.</p>
-            </div>
+    <script>
+        const allCards = [
+            // Part A
+            { q: "What are the 7 Cs of Communication?", a: "Clear, Concise, Concrete, Correct, Coherent, Complete, Courteous", cat: "part-a", catLabel: "Communication Skills" },
+            { q: "What is feedback in communication?", a: "The receiver's response back to the sender, completing the cycle.", cat: "part-a", catLabel: "Communication Skills" },
+            { q: "Define Emotional Intelligence (EQ).", a: "Ability to understand and manage own emotions, and understand others' emotions.", cat: "part-a", catLabel: "Self-Management Skills" },
+            { q: "What is the difference between RAM and ROM?", a: "RAM is volatile (temporary). ROM is non-volatile (permanent).", cat: "part-a", catLabel: "ICT Skills" },
+            { q: "Name 3 qualities of an entrepreneur.", a: "Risk-taker, innovative, hardworking, confident.", cat: "part-a", catLabel: "Entrepreneurial Skills" },
+            { q: "What is Sustainable Development?", a: "Progress that meets present needs without harming future generations.", cat: "part-a", catLabel: "Green Skills" },
+            
+            // Part B
+            { q: "Define Artificial Intelligence.", a: "A machine's ability to perform cognitive functions as humans do, such as perceiving, learning, reasoning and solving problems.", cat: "part-b", catLabel: "Intro to AI" },
+            { q: "What are the 3 domains of AI?", a: "Data, Computer Vision (CV), and Natural Language Processing (NLP).", cat: "part-b", catLabel: "Intro to AI" },
+            { q: "What are the stages of the AI Project Cycle?", a: "Problem Scoping, Data Acquisition, Data Exploration, Modelling, Evaluation.", cat: "part-b", catLabel: "AI Project Cycle" },
+            { q: "What is the 4Ws Canvas in Problem Scoping?", a: "Who, What, Where, and Why.", cat: "part-b", catLabel: "AI Project Cycle" },
+            { q: "What is Data Literacy?", a: "The ability to read, understand, create, and communicate data as information.", cat: "part-b", catLabel: "Data Literacy" },
+            { q: "What is the difference between mean, median, and mode?", a: "Mean = average. Median = middle value. Mode = most frequent value.", cat: "part-b", catLabel: "Math for AI" },
+            { q: "What is Generative AI?", a: "AI that can generate new content (text, images, audio) based on learned patterns (e.g., ChatGPT, Midjourney).", cat: "part-b", catLabel: "Generative AI" },
+            { q: "What are variables in Python?", a: "Containers for storing data values.", cat: "part-b", catLabel: "Intro to Python" },
+            { q: "How do you print 'Hello' in Python?", a: "print('Hello')", cat: "part-b", catLabel: "Intro to Python" },
+            { q: "What is a Neural Network?", a: "A computer system modeled on the human brain and nervous system, using nodes (artificial neurons).", cat: "part-b", catLabel: "Neural Networks" }
+        ];
 
-            <div class="bento-grid">
-                <!-- Card 1: Large (2 cols) -->
-                <div class="glass-card glass-card--large reveal">
-                    <div class="card-blur card-blur--tr"></div>
-                    <div class="card-inner">
-                        <div class="card-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
-                                height="28">
-                                <path d="M13 4a1 1 0 1 0 2 0 1 1 0 0 0-2 0zM6 21l3-7 2.5 2 4-6 2.5 4" />
-                                <path d="M9 14l-3 1" />
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Track &amp; Field</h3>
-                        <p class="card-body">Specializing in sprints and endurance. Pushing the limits of human speed
-                            and stamina with every stride, every second shaved off the clock.</p>
-                        <div class="card-stat">
-                            <span class="stat-num gradient-text">Sprints</span>
-                            <span class="stat-label">Speed is a weapon</span>
-                        </div>
-                    </div>
-                </div>
+        let currentCards = [...allCards];
+        let currentIndex = 0;
 
-                <!-- Card 2: Small -->
-                <div class="glass-card reveal">
-                    <div class="card-inner">
-                        <div class="card-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
-                                height="28">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z" />
-                                <path d="M2 12h20" />
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Football</h3>
-                        <p class="card-body">Agility, teamwork, and tactical precision on the field.</p>
-                    </div>
-                </div>
+        const flashcard = document.getElementById('flashcard');
+        const frontContent = document.getElementById('front-content');
+        const backContent = document.getElementById('back-content');
+        const frontCategory = document.getElementById('front-category');
+        const idxDisplay = document.getElementById('current-idx');
+        const totalDisplay = document.getElementById('total-cards');
 
-                <!-- Card 3: Small -->
-                <div class="glass-card reveal">
-                    <div class="card-inner">
-                        <div class="card-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
-                                height="28">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" />
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Basketball</h3>
-                        <p class="card-body">Explosive verticality and court vision. Pure athleticism.</p>
-                    </div>
-                </div>
+        function updateCard() {
+            if (currentCards.length === 0) return;
+            
+            // Remove flip if active
+            flashcard.classList.remove('is-flipped');
+            
+            setTimeout(() => {
+                const card = currentCards[currentIndex];
+                frontContent.textContent = card.q;
+                backContent.textContent = card.a;
+                frontCategory.textContent = card.catLabel;
+                
+                idxDisplay.textContent = currentIndex + 1;
+                totalDisplay.textContent = currentCards.length;
+            }, 150); // wait for unflip animation
+        }
 
-                <!-- Card 4: Large (2 cols) -->
-                <div class="glass-card glass-card--large reveal">
-                    <div class="card-blur card-blur--bl"></div>
-                    <div class="card-inner">
-                        <div class="card-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
-                                height="28">
-                                <path d="M7 8l-4 4 4 4M17 8l4 4-4 4M12 4v16" />
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Calisthenics</h3>
-                        <p class="card-body">Mastery of bodyweight. Muscle-ups, levers, and functional strength
-                            redefined. The body as the only equipment needed.</p>
-                        <div class="card-stat">
-                            <span class="stat-num gradient-text">Bodyweight</span>
-                            <span class="stat-label">No equipment needed</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        flashcard.addEventListener('click', () => {
+            flashcard.classList.toggle('is-flipped');
+        });
 
-    <!-- ── METRICS BANNER ── -->
-    <section class="metrics-section">
-        <div class="metrics-inner">
-            <div class="metric-col reveal">
-                <span class="metric-num gradient-text">Track</span>
-                <span class="metric-label">& Field</span>
-            </div>
-            <div class="metric-divider"></div>
-            <div class="metric-col reveal">
-                <span class="metric-num gradient-text">Football</span>
-                <span class="metric-label">The Beautiful Game</span>
-            </div>
-            <div class="metric-divider"></div>
-            <div class="metric-col reveal">
-                <span class="metric-num gradient-text">Basketball</span>
-                <span class="metric-label">Court Domination</span>
-            </div>
-        </div>
-    </section>
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (currentIndex < currentCards.length - 1) {
+                currentIndex++;
+                updateCard();
+            } else {
+                currentIndex = 0; // Loop back
+                updateCard();
+            }
+        });
 
-    <!-- ── ABOUT / TRAINING SECTION ── -->
-    <section id="about" class="section dev-section">
-        <div class="dev-grid-bg"></div>
-        <div class="container dev-container">
-            <div class="dev-pill reveal">THE HYBRID ATHLETE</div>
-            <h2 class="dev-title reveal">Train hard.<br><span class="gradient-text-inline">Compete harder.</span></h2>
-            <p class="dev-sub reveal">I don't just play one sport — I master movement. As a hybrid athlete, I bridge
-                endurance, explosive power, and functional strength across every domain.</p>
-            <a href="#contact" class="dev-link reveal">Work with me <span class="dev-link-arrow">→</span></a>
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCard();
+            } else {
+                currentIndex = currentCards.length - 1; // Loop to end
+                updateCard();
+            }
+        });
 
-            <!-- Biometrics Dashboard (replaces code editor) -->
-            <div class="stats-dashboard reveal">
-                <div class="stats-glow"></div>
-                <div class="stats-surface glass-surface">
-                    <div class="stats-header">
-                        <div class="stats-live-pulse"></div>
-                        <span>LIVE BIOMETRICS</span>
-                    </div>
+        document.getElementById('shuffle-btn').addEventListener('click', () => {
+            for (let i = currentCards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentCards[i], currentCards[j]] = [currentCards[j], currentCards[i]];
+            }
+            currentIndex = 0;
+            updateCard();
+        });
 
-                    <div class="stats-grid">
-                        <div class="stat-ring-box">
-                            <div class="stat-progress-ring">
-                                <svg class="progress-svg" viewBox="0 0 100 100">
-                                    <defs>
-                                        <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#a855f7" />
-                                            <stop offset="100%" stop-color="#ec4899" />
-                                        </linearGradient>
-                                    </defs>
-                                    <circle class="ring-bg" cx="50" cy="50" r="42"></circle>
-                                    <circle class="ring-fill" id="stat-ring-fill" cx="50" cy="50" r="42"></circle>
-                                </svg>
-                                <div class="ring-content">
-                                    <span class="ring-val"><span id="stat-ring-val">99</span><span
-                                            class="ring-unit">%</span></span>
-                                    <span class="ring-lbl">Peak Output</span>
-                                </div>
-                            </div>
-                        </div>
+        document.getElementById('category-select').addEventListener('change', (e) => {
+            const val = e.target.value;
+            if (val === 'all') {
+                currentCards = [...allCards];
+            } else {
+                currentCards = allCards.filter(c => c.cat === val);
+            }
+            currentIndex = 0;
+            updateCard();
+        });
 
-                        <div class="stat-bars-box">
-                            <div class="stat-bar">
-                                <div class="bar-info"><span>Explosive Power</span> <span
-                                        id="stat-explosive-txt">96%</span></div>
-                                <div class="bar-track">
-                                    <div id="stat-explosive-bar" class="bar-fill"
-                                        style="transition-delay: 0.2s; width: 96%; background: #7c3aed;"></div>
-                                </div>
-                            </div>
-                            <div class="stat-bar">
-                                <div class="bar-info"><span>Endurance Base</span> <span
-                                        id="stat-endurance-txt">88%</span></div>
-                                <div class="bar-track">
-                                    <div id="stat-endurance-bar" class="bar-fill"
-                                        style="transition-delay: 0.4s; width: 88%; background: #ffffff;"></div>
-                                </div>
-                            </div>
-                            <div class="stat-bar">
-                                <div class="bar-info"><span>Agility & Reaction</span> <span
-                                        id="stat-agility-txt">94%</span></div>
-                                <div class="bar-track">
-                                    <div id="stat-agility-bar" class="bar-fill"
-                                        style="transition-delay: 0.6s; width: 94%; background: rgba(255,255,255,0.4);">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="stats-footer">
-                        <div class="stat-footer-item">
-                            <span class="sfi-val gradient-text" id="stat-pace">4:20/km</span>
-                            <span class="sfi-lbl">Pace PR</span>
-                        </div>
-                        <div class="stat-footer-item">
-                            <span class="sfi-val gradient-text" id="stat-vo2">50.2</span>
-                            <span class="sfi-lbl">VO2 Max</span>
-                        </div>
-                        <div class="stat-footer-item">
-                            <span class="sfi-val gradient-text" id="stat-age">14 yrs</span>
-                            <span class="sfi-lbl">Age Group</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── GALLERY ── -->
-    <section id="gallery" class="section gallery-section">
-        <div class="container">
-            <div class="bento-head">
-                <h2 class="bento-title reveal">In <span class="gradient-text-inline">Action</span></h2>
-                <p class="bento-sub reveal">Moments captured across every discipline.</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="glass-card gallery-card reveal">
-                    <div class="card-inner gallery-placeholder">🏃‍♂️<span>Track</span></div>
-                </div>
-                <div class="glass-card gallery-card reveal">
-                    <div class="card-inner gallery-placeholder">⚽<span>Football</span></div>
-                </div>
-                <div class="glass-card gallery-card reveal">
-                    <div class="card-inner gallery-placeholder">🏀<span>Basketball</span></div>
-                </div>
-                <div class="glass-card gallery-card reveal">
-                    <div class="card-inner gallery-placeholder">💪<span>Calisthenics</span></div>
-                </div>
-                <div class="glass-card gallery-card reveal">
-                    <div class="card-inner gallery-placeholder">🏆<span>Achievements</span></div>
-                </div>
-                <div class="glass-card gallery-card reveal">
-                    <div class="card-inner gallery-placeholder">🎯<span>Training</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="contact" class="section cta-section">
-        <div class="cta-blur"></div>
-        <div class="container cta-container">
-            <h2 class="cta-title reveal gradient-text">Ready to connect?</h2>
-            <p class="cta-sub reveal">Open for collaborations, sponsorships, and training inquiries. Let's build
-                something extraordinary together.</p>
-            <div class="cta-btns reveal">
-                <a href="mailto:vivaandhawan08@gmail.com" class="pill-btn pill-btn--solid pill-btn--lg">
-                    <span class="pill-btn__streak"></span>
-                    <span class="pill-btn__text">Email Me</span>
-                </a>
-                <a href="https://instagram.com/vxndwn" target="_blank" class="pill-btn pill-btn--outline pill-btn--lg">
-                    <span class="pill-btn__streak"></span>
-                    <span class="pill-btn__text">Instagram</span>
-                </a>
-                <a href="https://discord.gg/pa2cn8TnR2" target="_blank" class="pill-btn pill-btn--outline pill-btn--lg">
-                    <span class="pill-btn__streak"></span>
-                    <span class="pill-btn__text">Discord</span>
-                </a>
-            </div>
-            <p class="cta-handles reveal">📸 @vxndwn &nbsp;&nbsp;•&nbsp;&nbsp; 💬 @vivaandhawan08</p>
-        </div>
-    </section>
-
-    <!-- ── FOOTER ── -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <span class="footer-logo">VIVAAN<span class="logo-accent">.</span></span>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Terms</a>
-                <a href="https://instagram.com/vxndwn" target="_blank" class="footer-link">Instagram</a>
-                <a href="https://discord.gg/pa2cn8TnR2" target="_blank" class="footer-link">Discord</a>
-            </div>
-            <span class="footer-copy">&copy; 2026 Vivaan Dhawan. All rights reserved.</span>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
-    <script type="module" src="firebase-listener.js"></script>
+        // Initialize
+        updateCard();
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') document.getElementById('next-btn').click();
+            if (e.key === 'ArrowLeft') document.getElementById('prev-btn').click();
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                flashcard.click();
+            }
+        });
+    </script>
 </body>
-
 </html>

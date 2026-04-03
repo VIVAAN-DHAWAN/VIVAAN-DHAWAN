@@ -1,3 +1,4 @@
-# Static site: publish repo root so `_headers`, `.well-known/`, and assets deploy together.
+# Bundle Firebase into first-party JS (script-src 'self' only). Self-hosted Three.js in vendor/.
 [build]
   publish = "."
+  command = "npm ci && npm run build"

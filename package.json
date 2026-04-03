@@ -1,0 +1,14 @@
+{
+  "name": "vivaan-dhawan",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/stats-listener.js --bundle --format=esm --minify --platform=browser --outfile=firebase-listener.js && esbuild src/admin-app.js --bundle --format=esm --minify --platform=browser --outfile=admin.js"
+  },
+  "dependencies": {
+    "firebase": "10.10.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

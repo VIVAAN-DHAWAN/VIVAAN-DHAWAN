@@ -1,73 +1,70 @@
 <div align="center">
-  <h1>Hey, I'm Vivaan 👋</h1>
-  <p>14-year-old developer, builder, and athlete from India 🇮🇳</p>
+
+# Vivaan Dhawan
+
+**Developer · AI builder · hybrid athlete**
+
+I build small, useful AI tools, contribute fixes to open source projects, and train across sprinting, football, basketball, and calisthenics.
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-vivaan--dhawan-ffffff?style=for-the-badge&logo=github&logoColor=black)](https://github.com/VIVAAN-DHAWAN/vivaan-dhawan)
+[![Email](https://img.shields.io/badge/Email-vivaandhawan08%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:vivaandhawan08@gmail.com)
+[![Discord](https://img.shields.io/badge/Discord-vivaandhawan08-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com)
+
 </div>
 
 ---
 
-## 🧠 About Me
-- 🔨 Building open source AI tools for developers
-- 🤖 Exploring AI development, automation, and APIs
-- 🏃 Serious about calisthenics and running — VO2 max 50.2, PR pace 4:20/km
-- 📍 Rohtak, Haryana, India
-- 😄 He/Him
+## What I Am Building
 
----
+- AI developer tools that make coding, research, and automation faster.
+- Local-first experiments with agents, memory, search, and code review.
+- Clean portfolio projects with real interfaces, docs, and reproducible setup.
+- Open source fixes in active repositories where I can reproduce the issue and verify the patch.
 
-## 🛠️ Tech & Tools
+## Current Focus
 
+| Area | What I am working on |
+| --- | --- |
+| AI engineering | Agents, automation, API integrations, local LLM workflows |
+| Web apps | TypeScript, frontend polish, dashboards, product-style UI |
+| Python | CLI tools, tests, data workflows, practical automation |
+| Open source | Bug fixes, regression tests, docs, and small maintainable improvements |
+| Athletics | Sprint speed, endurance base, football, basketball, calisthenics |
 
+## Tech I Use
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-
-
-
-
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
-
-
-
-
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat&logo=ollama&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=github-actions&logoColor=white)
 
+## Featured Work
 
+- **Portfolio site**: polished personal website for athlete + builder identity.
+- **AI study and visibility tools**: practical TypeScript projects for learning and monitoring.
+- **Open source contributions**: focused PRs with reproduction steps, regression tests, and validation notes.
 
-
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
-
-
-
-
-![Ollama](https://img.shields.io/badge/Ollama-black?style=flat)
-
-
-
----
-
-## 📊 GitHub Stats
+## GitHub Snapshot
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=VIVAAN-DHAWAN&show_icons=true&theme=tokyonight&hide_border=true" height="150"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=VIVAAN-DHAWAN&layout=compact&theme=tokyonight&hide_border=true" height="150"/>
+
+<img src="https://github-readme-stats.vercel.app/api?username=VIVAAN-DHAWAN&show_icons=true&theme=tokyonight&hide_border=true" height="155" alt="Vivaan Dhawan GitHub stats" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=VIVAAN-DHAWAN&layout=compact&theme=tokyonight&hide_border=true" height="155" alt="Vivaan Dhawan top languages" />
+
 </div>
 
----
+## How I Work
 
-## 📫 Contact Me
-
-[
-
-![Email](https://img.shields.io/badge/Email-armaandhawan61@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)
-
-](mailto:armaandhawan61@gmail.com)
-[
-
-![Discord](https://img.shields.io/badge/Discord-@vivaandhawan08-5865F2?style=flat&logo=discord&logoColor=white)
-
-](https://discord.com)
+I like changes that are small enough to review and real enough to matter: reproduce the bug, add the smallest useful fix, verify it, and explain the result clearly.
 
 ---
 
 <div align="center">
-  <i>Building cool things, one repo at a time. 🔥</i>
+
+**Building useful things, improving every week.**
+
 </div>

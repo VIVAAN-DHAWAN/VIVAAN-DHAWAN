@@ -51,6 +51,10 @@ I build small, useful AI tools, contribute fixes to open source projects, and tr
 
 I like changes that are small enough to review and real enough to matter: reproduce the bug, add the smallest useful fix, verify it, and explain the result clearly.
 
+![GitHub Streak](https://streak-stats.demolab.com?user=VIVAAN-DHAWAN&theme=tokyonight)
+
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=VIVAAN-DHAWAN&theme=tokyo-night)
+
 ---
 
 <div align="center">

@@ -6,9 +6,8 @@
 
 I build small, useful AI tools, contribute fixes to open source projects, and train across sprinting, football, basketball, and calisthenics.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-vivaan--dhawan-ffffff?style=for-the-badge&logo=github&logoColor=black)](https://github.com/VIVAAN-DHAWAN/vivaan-dhawan)
-[![Email](https://img.shields.io/badge/Email-vivaandhawan08%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:vivaandhawan08@gmail.com)
-[![Discord](https://img.shields.io/badge/Discord-vivaandhawan08-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-vivaan--portfolio-ffffff?style=for-the-badge&logo=github&logoColor=black)](https://github.com/VIVAAN-DHAWAN/vivaan-portfolio)
+[![Email](https://img.shields.io/badge/Email-armaandhawan61%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:armaandhawan61@gmail.com)
 
 </div>
 
@@ -47,15 +46,6 @@ I build small, useful AI tools, contribute fixes to open source projects, and tr
 - **Portfolio site**: polished personal website for athlete + builder identity.
 - **AI study and visibility tools**: practical TypeScript projects for learning and monitoring.
 - **Open source contributions**: focused PRs with reproduction steps, regression tests, and validation notes.
-
-## GitHub Snapshot
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=VIVAAN-DHAWAN&show_icons=true&theme=tokyonight&hide_border=true" height="155" alt="Vivaan Dhawan GitHub stats" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=VIVAAN-DHAWAN&layout=compact&theme=tokyonight&hide_border=true" height="155" alt="Vivaan Dhawan top languages" />
-
-</div>
 
 ## How I Work
 

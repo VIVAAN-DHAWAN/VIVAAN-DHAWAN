@@ -171,14 +171,27 @@
 /* ===== 4. UI INTERACTIONS ===== */
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ── Scroll Reveal (Intersection Observer — slide up 40px + fade) ──
+    const smoothScrollTo = (target, options = {}) => {
+        if (window.portfolioScroll) {
+            window.portfolioScroll.to(target, options);
+            return;
+        }
+
+        if (typeof target === 'number') {
+            window.scrollTo({ top: target, behavior: 'smooth' });
+        } else {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+    // ── Scroll Reveal ──
     const revealEls = document.querySelectorAll('.reveal');
     const revealObs = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
             if (e.isIntersecting) {
-                const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
+                const siblings = [...e.target.parentElement.children].filter(el => el.classList.contains('reveal'));
                 const idx = siblings.indexOf(e.target);
-                e.target.style.transitionDelay = (idx * 0.07) + 's';
+                e.target.style.setProperty('--reveal-delay', (Math.min(idx, 5) * 0.075) + 's');
                 e.target.classList.add('visible');
                 revealObs.unobserve(e.target);
             }
@@ -234,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = link.getAttribute('href');
             const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                smoothScrollTo(target);
                 document.getElementById('navbar').classList.remove('open');
             }
         });
@@ -294,13 +307,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = a.getAttribute('href');
             if (href === '#') {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                smoothScrollTo(0, { offset: 0 });
                 return;
             }
             e.preventDefault();
             const t = document.querySelector(href);
             if (t) {
-                t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                smoothScrollTo(t);
                 document.getElementById('navbar').classList.remove('open');
             }
         });

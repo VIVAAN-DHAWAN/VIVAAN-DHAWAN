@@ -30,8 +30,20 @@
 }
 
 html {
-    scroll-behavior: smooth;
     overflow-x: hidden
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
 }
 
 body {
@@ -1315,13 +1327,20 @@ video {
    ═══════════════════════════════════════ */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    filter: blur(5px);
+    transform: translateY(32px) scale(0.985);
+    transition: opacity 0.8s var(--ease-out),
+        filter 0.8s var(--ease-out),
+        transform 0.9s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, filter, transform;
 }
 
 .reveal.visible {
     opacity: 1;
+    filter: blur(0);
     transform: translateY(0);
+    will-change: auto;
 }
 
 /* Stagger children in bento grid */
@@ -1339,6 +1358,20 @@ video {
 
 .bento-grid .glass-card:nth-child(4).reveal {
     transition-delay: 0.24s
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal.visible {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+    }
 }
 
 

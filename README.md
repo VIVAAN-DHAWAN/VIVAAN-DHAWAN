@@ -2,7 +2,7 @@
 
 ![Vivaan Dhawan](https://capsule-render.vercel.app/api?type=waving&height=230&color=0:00C9FF,50:7B2FFF,100:FF2D95&text=VIVAAN%20DHAWAN&fontColor=FFFFFF&fontSize=52&fontAlignY=38&desc=AI%20BUILDER%20%E2%80%A2%20DEVELOPER%20%E2%80%A2%20HYBRID%20ATHLETE&descAlignY=59&descSize=17&animation=fadeIn)
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=900&color=00C9FF&center=true&vCenter=true&width=700&lines=Building+AI+tools+that+solve+real+problems;Shipping+deterministic+review+tooling;160%2B+merged+pull+requests+upstream;Code+by+day.+Train+every+day.)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=900&color=00C9FF&center=true&vCenter=true&width=700&lines=Building+AI+tools+that+solve+real+problems;Shipping+deterministic+review+tooling;29+merged+pulls+across+18+upstream+repos;Code+by+day.+Train+every+day.)](https://git.io/typing-svg)
 
 [![Portfolio](https://img.shields.io/badge/EXPLORE_MY_PORTFOLIO-FF2D95?style=for-the-badge&logo=vercel&logoColor=white)](https://vivaandhawan.netlify.app)
 [![Email](https://img.shields.io/badge/LET'S_TALK-00C9FF?style=for-the-badge&logo=gmail&logoColor=111111)](mailto:armaandhawan61@gmail.com)
@@ -16,7 +16,7 @@
 Vivaan Dhawan
 ├── builds     AI agents, developer tools, and polished web apps
 ├── ships      diffly-cli — on PyPI, Homebrew, and as a GitHub Action
-├── upstream   160+ merged pull requests in open-source agent tooling
+├── upstream   29 merged pull requests across 18 repositories I don't own
 └── trains     sprinting, football, basketball, and calisthenics
 ```
 

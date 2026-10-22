@@ -2,7 +2,7 @@
 
 ![Vivaan Dhawan](https://capsule-render.vercel.app/api?type=waving&height=230&color=0:00C9FF,50:7B2FFF,100:FF2D95&text=VIVAAN%20DHAWAN&fontColor=FFFFFF&fontSize=52&fontAlignY=38&desc=AI%20BUILDER%20%E2%80%A2%20DEVELOPER%20%E2%80%A2%20HYBRID%20ATHLETE&descAlignY=59&descSize=17&animation=fadeIn)
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=900&color=00C9FF&center=true&vCenter=true&width=700&lines=Building+AI+tools+that+solve+real+problems;Breaking+things%2C+fixing+them%2C+learning+fast;Code+by+day.+Train+every+day.)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=900&color=00C9FF&center=true&vCenter=true&width=700&lines=Building+AI+tools+that+solve+real+problems;Shipping+deterministic+review+tooling;160%2B+merged+pull+requests+upstream;Code+by+day.+Train+every+day.)](https://git.io/typing-svg)
 
 [![Portfolio](https://img.shields.io/badge/EXPLORE_MY_PORTFOLIO-FF2D95?style=for-the-badge&logo=vercel&logoColor=white)](https://vivaandhawan.netlify.app)
 [![Email](https://img.shields.io/badge/LET'S_TALK-00C9FF?style=for-the-badge&logo=gmail&logoColor=111111)](mailto:armaandhawan61@gmail.com)
@@ -15,12 +15,51 @@
 ```text
 Vivaan Dhawan
 ├── builds     AI agents, developer tools, and polished web apps
-├── explores   local LLMs, automation, memory, search, and APIs
-├── contributes reproducible fixes, regression tests, and clear docs
+├── ships      diffly-cli — on PyPI, Homebrew, and as a GitHub Action
+├── upstream   160+ merged pull requests in open-source agent tooling
 └── trains     sprinting, football, basketball, and calisthenics
 ```
 
 I like to fix things. Sometimes they work; other times they teach me something better.
+
+## Featured Builds
+
+<div align="center">
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/VIVAAN-DHAWAN/diffly-cli">diffly</a></h3>
+      <p>Reads a 4,000-line pull request and hands back one page: changed symbols, blast radius, risk flags, and a <b>PASS / QUARANTINE / BLOCK</b> verdict. Deterministic — same diff in, same verdict out. The optional LLM explainer can never change the verdict.</p>
+      <code>pip install diffly-cli</code><br><br>
+      <img src="https://img.shields.io/badge/PyPI-1.1.0-3776AB?style=flat-square&logo=pypi&logoColor=white" alt="PyPI" />
+      <img src="https://img.shields.io/badge/Homebrew-tap-FBB040?style=flat-square&logo=homebrew&logoColor=111111" alt="Homebrew" />
+      <img src="https://img.shields.io/badge/GitHub_Action-ready-00C9FF?style=flat-square&logo=githubactions&logoColor=111111" alt="GitHub Action" />
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/VIVAAN-DHAWAN/lockin">LockIn</a></h3>
+      <p>Native macOS exam kiosk written in Swift. Locks the machine to YouTube, Claude and ChatGPT for a timed study block — and actively enforces it. Every other app gets hidden, and <code>Cmd+Q</code> stops working.</p>
+      <img src="https://img.shields.io/badge/macOS_12%2B-111111?style=flat-square&logo=apple&logoColor=white" alt="macOS" />
+      <img src="https://img.shields.io/badge/Swift_6-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/VIVAAN-DHAWAN/AI-code-reviewer">AI Code Reviewer</a></h3>
+      <p>AI-powered GitHub Action that reviews pull requests, leaves inline feedback on changed lines, and works with any OpenAI-compatible API — including local Ollama at zero cost.</p>
+      <img src="https://img.shields.io/badge/GitHub_Action-00C9FF?style=flat-square&logo=githubactions&logoColor=111111" alt="GitHub Action" />
+      <img src="https://img.shields.io/badge/Ollama_ready-FF2D95?style=flat-square&logo=ollama&logoColor=white" alt="Ollama ready" />
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/VIVAAN-DHAWAN/laya-voice-browser">Laya Voice Browser</a></h3>
+      <p>Talk to a headed Chromium window and it acts before you finish the sentence. Runs fully on-device on Apple Silicon via MLX — no API key, no cloud cost.</p>
+      <img src="https://img.shields.io/badge/On--Device_MLX-7B2FFF?style=flat-square&logo=apple&logoColor=white" alt="On-device MLX" />
+      <img src="https://img.shields.io/badge/Playwright-38A169?style=flat-square&logo=playwright&logoColor=white" alt="Playwright" />
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ## Tech Arsenal
 
@@ -34,43 +73,6 @@ I like to fix things. Sometimes they work; other times they teach me something b
 ![OpenAI](https://img.shields.io/badge/OpenAI-111111?style=for-the-badge&logo=openai&logoColor=white)
 ![Ollama](https://img.shields.io/badge/Ollama-FF2D95?style=for-the-badge&logo=ollama&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-7B2FFF?style=for-the-badge&logo=githubactions&logoColor=white)
-
-</div>
-
-## Featured Builds
-
-<div align="center">
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/VIVAAN-DHAWAN/AI-code-reviewer">AI Code Reviewer</a></h3>
-      <p>AI-powered GitHub Action that reviews pull requests, leaves inline feedback, and works with any OpenAI-compatible API.</p>
-      <img src="https://img.shields.io/badge/GitHub_Action-00C9FF?style=flat-square&logo=githubactions&logoColor=111111" alt="GitHub Action" />
-      <img src="https://img.shields.io/badge/OpenAI_Compatible-FF2D95?style=flat-square&logo=openai&logoColor=white" alt="OpenAI compatible" />
-    </td>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/VIVAAN-DHAWAN/talos">Talos</a></h3>
-      <p>Repository-health dashboard with dead-code scanning, safe cleanup, panic recovery, and a complete audit trail.</p>
-      <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-      <img src="https://img.shields.io/badge/Repo_Health-7B2FFF?style=flat-square&logo=git&logoColor=white" alt="Repository health" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/VIVAAN-DHAWAN/ai-visibility-monitor">AI Visibility Monitor</a></h3>
-      <p>Self-hosted dashboard for tracking brand visibility across AI search engines with bring-your-own keys.</p>
-      <img src="https://img.shields.io/badge/Self_Hosted-38A169?style=flat-square&logo=docker&logoColor=white" alt="Self hosted" />
-      <img src="https://img.shields.io/badge/AI_Search-00C9FF?style=flat-square&logo=google&logoColor=111111" alt="AI search" />
-    </td>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/VIVAAN-DHAWAN/readme-ai-generator">README AI Generator</a></h3>
-      <p>CLI and GitHub Action that understands a codebase and creates a structured README automatically.</p>
-      <img src="https://img.shields.io/badge/CLI-F7DF1E?style=flat-square&logo=gnubash&logoColor=111111" alt="CLI" />
-      <img src="https://img.shields.io/badge/Ollama_Ready-FF2D95?style=flat-square&logo=ollama&logoColor=white" alt="Ollama ready" />
-    </td>
-  </tr>
-</table>
 
 </div>
 
